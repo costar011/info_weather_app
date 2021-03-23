@@ -89,7 +89,7 @@ const TodayScreen = () => {
                 break;
 
               case "thunderstorm":
-                setWeatherStatus("번개가치니 집에 있어주세요.");
+                setWeatherStatus("번개가치네요. 집에 있어주세요.");
                 break;
 
               case "snow":
@@ -146,26 +146,32 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `center`,
   },
+
   box_1: {
-    flex: 2.5,
+    flex: 2,
     width: `100%`,
+
     flexDirection: `column`,
     alignItems: `center`,
     justifyContent: `center`,
   },
+
   dateText: {
     fontSize: 19,
     color: `#34495e`,
   },
+
   timeText: {
     fontSize: 34,
     fontWeight: `700`,
   },
+
   statusText: {
     fontSize: 18,
     color: `#333`,
     marginBottom: 100,
   },
+
   box_2: {
     flex: 3,
     width: `100%`,
@@ -173,10 +179,12 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `flex-end`,
   },
+
   tempText: {
     fontWeight: `500`,
     fontSize: 90,
   },
+
   tempUnderLine: {
     width: `70%`,
     height: 5,
@@ -184,6 +192,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: -10,
   },
+
   box_3: {
     flex: 1,
     width: `100%`,
@@ -191,11 +200,13 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `flex-start`,
   },
+
   cityText: {
     fontSize: 20,
     fontWeight: `500`,
     color: `#888`,
   },
+
   box_4: {
     flex: 2,
     width: `100%`,
@@ -203,6 +214,7 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `center`,
   },
+
   box_4_box: {
     flex: 1,
     width: `40%`,
@@ -210,11 +222,13 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `center`,
   },
+
   tempGuideText: {
     fontSize: 26,
     fontWeight: `500`,
     padding: 5,
   },
+
   minMaxText: {
     fontWeight: `400`,
     fontSize: 20,
