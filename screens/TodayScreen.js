@@ -154,22 +154,26 @@ const styles = StyleSheet.create({
     flexDirection: `column`,
     alignItems: `center`,
     justifyContent: `center`,
+
+    backgroundColor: `#b2bec3`,
   },
 
   dateText: {
-    fontSize: 19,
-    color: `#34495e`,
+    fontSize: 25,
+    color: `#04041a`,
   },
 
   timeText: {
-    fontSize: 34,
-    fontWeight: `700`,
+    fontSize: 45,
+    fontWeight: `600`,
   },
 
   statusText: {
-    fontSize: 18,
-    color: `#333`,
-    marginBottom: 100,
+    fontSize: 20,
+
+    color: `#0b0b0b`,
+    marginBottom: 95,
+    fontWeight: `500`,
   },
 
   box_2: {
