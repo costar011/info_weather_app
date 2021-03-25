@@ -160,12 +160,15 @@ const styles = StyleSheet.create({
 
   dateText: {
     fontSize: 25,
+
     color: `#04041a`,
   },
 
   timeText: {
-    fontSize: 45,
-    fontWeight: `600`,
+    fontSize: 50,
+
+    fontWeight: `500`,
+    marginTop: 30,
   },
 
   statusText: {
@@ -178,27 +181,32 @@ const styles = StyleSheet.create({
 
   box_2: {
     flex: 3,
+
     width: `100%`,
+
     flexDirection: `column`,
     alignItems: `center`,
     justifyContent: `flex-end`,
   },
 
   tempText: {
-    fontWeight: `500`,
+    fontWeight: `600`,
+
     fontSize: 90,
   },
 
   tempUnderLine: {
     width: `70%`,
     height: 5,
+
     backgroundColor: "#666",
     borderRadius: 20,
-    marginTop: -10,
+    marginTop: -5,
   },
 
   box_3: {
     flex: 1,
+
     width: `100%`,
     flexDirection: `column`,
     alignItems: `center`,
@@ -206,13 +214,14 @@ const styles = StyleSheet.create({
   },
 
   cityText: {
-    fontSize: 20,
-    fontWeight: `500`,
-    color: `#888`,
+    fontSize: 25,
+    fontWeight: `600`,
+    color: `#444`,
   },
 
   box_4: {
     flex: 2,
+
     width: `100%`,
     flexDirection: `row`,
     alignItems: `center`,
@@ -221,20 +230,24 @@ const styles = StyleSheet.create({
 
   box_4_box: {
     flex: 1,
+
     width: `40%`,
     height: `100%`,
+
     alignItems: `center`,
     justifyContent: `center`,
   },
 
   tempGuideText: {
-    fontSize: 26,
-    fontWeight: `500`,
-    padding: 5,
+    fontSize: 25,
+
+    fontWeight: `600`,
+    padding: 15,
   },
 
   minMaxText: {
     fontWeight: `400`,
+
     fontSize: 20,
   },
 });
