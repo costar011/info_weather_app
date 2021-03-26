@@ -172,9 +172,8 @@ const styles = StyleSheet.create({
   statusText: {
     fontSize: 20,
 
-    color: `#0b0b0b`,
     marginBottom: 80,
-    fontWeight: `500`,
+    fontWeight: `600`,
   },
 
   box_2: {
@@ -214,12 +213,12 @@ const styles = StyleSheet.create({
   },
 
   cityText: {
-    fontSize: 25,
-    fontWeight: `600`,
+    fontSize: 30,
+    fontWeight: `700`,
 
     marginTop: 10,
 
-    color: `#444`,
+    color: `#5c5f66`,
   },
 
   box_4: {
@@ -246,12 +245,19 @@ const styles = StyleSheet.create({
 
     fontWeight: `600`,
     padding: 15,
+
+    backgroundColor: `#b6b9bf`,
   },
 
   minMaxText: {
-    fontWeight: `400`,
+    fontWeight: `500`,
 
-    fontSize: 20,
+    fontSize: 35,
+    padding: 5,
+
+    marginTop: 15,
+
+    backgroundColor: `#adadad`,
   },
 });
 
