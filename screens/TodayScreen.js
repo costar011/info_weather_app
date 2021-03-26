@@ -149,19 +149,17 @@ const styles = StyleSheet.create({
 
   box_1: {
     flex: 2,
-    width: `100%`,
 
+    width: `100%`,
     flexDirection: `column`,
     alignItems: `center`,
     justifyContent: `center`,
-
-    backgroundColor: `#b2bec3`,
   },
 
   dateText: {
     fontSize: 25,
 
-    color: `#04041a`,
+    color: `#0b0b0b`,
   },
 
   timeText: {
@@ -175,7 +173,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
 
     color: `#0b0b0b`,
-    marginBottom: 95,
+    marginBottom: 80,
     fontWeight: `500`,
   },
 
@@ -196,12 +194,13 @@ const styles = StyleSheet.create({
   },
 
   tempUnderLine: {
-    width: `70%`,
-    height: 10,
+    width: `80%`,
+    height: 5,
 
-    backgroundColor: "#444",
+    backgroundColor: "#a7a9ab",
+
     borderRadius: 10,
-    marginTop: -5,
+
     marginBottom: 10,
   },
 
