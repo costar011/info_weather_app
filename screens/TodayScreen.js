@@ -197,11 +197,12 @@ const styles = StyleSheet.create({
 
   tempUnderLine: {
     width: `70%`,
-    height: 5,
+    height: 10,
 
-    backgroundColor: "#666",
-    borderRadius: 20,
+    backgroundColor: "#444",
+    borderRadius: 10,
     marginTop: -5,
+    marginBottom: 10,
   },
 
   box_3: {
@@ -216,6 +217,9 @@ const styles = StyleSheet.create({
   cityText: {
     fontSize: 25,
     fontWeight: `600`,
+
+    marginTop: 10,
+
     color: `#444`,
   },
 
