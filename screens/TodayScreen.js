@@ -84,6 +84,10 @@ const TodayScreen = () => {
                 setWeatherStatus("비가 오고있어요. 우산을 챙겨가세요.");
                 break;
 
+              case "moderate rain":
+                setWeatherStatus("비가 오고있어요. 우산을 챙겨가세요.");
+                break;
+
               case "rain":
                 setWeatherStatus("비가 오고있어요. 우산을 챙겨가세요.");
                 break;
@@ -245,8 +249,6 @@ const styles = StyleSheet.create({
 
     fontWeight: `600`,
     padding: 15,
-
-    backgroundColor: `#b6b9bf`,
   },
 
   minMaxText: {
@@ -256,8 +258,6 @@ const styles = StyleSheet.create({
     padding: 5,
 
     marginTop: 15,
-
-    backgroundColor: `#adadad`,
   },
 });
 
