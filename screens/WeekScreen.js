@@ -279,14 +279,16 @@ const styles = StyleSheet.create({
       width: 0,
       height: 4,
     },
-    shadowOpacity: 0.7,
-    shadowRadius: 2.1,
+    shadowOpacity: 0.6,
+    shadowRadius: 2,
 
-    elevation: 18,
+    elevation: 15,
   },
 
   btnTxt: {
-    color: `#fff`,
+    color: `#ffffff`,
+
+    fontSize: 16,
   },
 
   activeBtn: {

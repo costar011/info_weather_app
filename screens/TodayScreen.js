@@ -150,16 +150,15 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `center`,
   },
-
   box_1: {
-    flex: 2,
+    flex: 2.5,
 
     width: `100%`,
+
     flexDirection: `column`,
     alignItems: `center`,
     justifyContent: `center`,
   },
-
   dateText: {
     fontSize: 25,
 
