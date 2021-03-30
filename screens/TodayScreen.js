@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import * as Location from "expo-location";
 import { getCurrentDate } from "../src/commonUtil";
+import { LinearGradient } from "expo-linear-gradient";
+import TypeWriter from "react-native-typewriter";
 
 const WEATHER_API_KEY = "c2279690f1a92e1324cfa1a79d5584ed";
 
@@ -22,6 +24,7 @@ const TodayScreen = () => {
   const [maxTemp, setMaxTemp] = useState(``);
 
   const [weatherStatus, setWeatherStatus] = useState(``);
+  const [weatherImg, setWeatherImg] = useState(null);
 
   setInterval(() => {
     const { currentDate, currentTime } = getCurrentDate();
@@ -69,41 +72,69 @@ const TodayScreen = () => {
 
             switch (status) {
               case "clear sky":
-                setWeatherStatus("날씨가 좋네요.  오늘 외출은 어떠신가요?");
-                break;
-
-              case "few clouds":
-                setWeatherStatus("조금 흐리네요. 따뜻하게 입으세요.");
-                break;
-
-              case "broken clouds":
-                setWeatherStatus("비가 올 수도 있겠네요 우산을 챙겨주세요.");
-                break;
-
-              case "shower rain":
-                setWeatherStatus("비가 오고있어요. 우산을 챙겨가세요.");
+                setWeatherStatus("날씨가 좋습니다.");
+                setWeatherImg(
+                  "https://firebasestorage.googleapis.com/v0/b/info-weather.appspot.com/o/sun.png?alt=media&token=0c1abb08-0797-4146-b9f4-6ca8c76f621f"
+                );
                 break;
 
               case "moderate rain":
-                setWeatherStatus("비가 오고있어요. 우산을 챙겨가세요.");
+                setWeatherStatus("비가 오고있습니다.");
+                setWeatherImg(
+                  "https://firebasestorage.googleapis.com/v0/b/info-weather.appspot.com/o/rain.png?alt=media&token=36162268-3e2c-4eff-977b-c65312a8d330"
+                );
+                break;
+
+              case "few clouds":
+                setWeatherStatus("조금 흐립니다.");
+                setWeatherImg(
+                  "https://firebasestorage.googleapis.com/v0/b/info-weather.appspot.com/o/cloud-computing.png?alt=media&token=82522e05-c9cf-446f-bf16-f00297b269e3"
+                );
+                break;
+
+              case "scattered clouds":
+                setWeatherStatus("구름이 많습니다.");
+                setWeatherImg(
+                  "https://firebasestorage.googleapis.com/v0/b/info-weather.appspot.com/o/clouds.png?alt=media&token=fd1aee92-54be-49e6-b9eb-b9d28973e94d"
+                );
+                break;
+
+              case "broken clouds":
+                setWeatherStatus("비가 올 수도 있습니다.");
+                setWeatherImg(
+                  "https://firebasestorage.googleapis.com/v0/b/info-weather.appspot.com/o/cloud-computing.png?alt=media&token=fb162215-dd16-40a9-bf87-2380587f25d9"
+                );
+                break;
+
+              case "shower rain":
+                setWeatherStatus("비가 오고있습니다.");
+                "https://firebasestorage.googleapis.com/v0/b/info-weather.appspot.com/o/rain.png?alt=media&token=36162268-3e2c-4eff-977b-c65312a8d330";
                 break;
 
               case "rain":
-                setWeatherStatus("비가 오고있어요. 우산을 챙겨가세요.");
+                setWeatherStatus("비가 오고있습니다.");
+                "https://firebasestorage.googleapis.com/v0/b/info-weather.appspot.com/o/rain.png?alt=media&token=36162268-3e2c-4eff-977b-c65312a8d330";
                 break;
 
-              case "thunderstorm":
-                setWeatherStatus("번개가치네요. 집에 있어주세요.");
+              case "thunder storm":
+                setWeatherStatus("번개가 치고 있습니다.");
+                setWeatherImg(
+                  "https://firebasestorage.googleapis.com/v0/b/info-weather.appspot.com/o/flash.png?alt=media&token=1d7fff5a-de1c-4328-8ae4-010397409558"
+                );
                 break;
 
               case "snow":
-                setWeatherStatus(
-                  "눈이 오고있어요. 오늘은 따뜻한 코코아 한잔 어떠신가요."
+                setWeatherStatus("눈이 오고있습니다");
+                setWeatherImg(
+                  "https://firebasestorage.googleapis.com/v0/b/info-weather.appspot.com/o/snow.png?alt=media&token=84941108-0986-4d54-bb64-f17b16b2e8b1"
                 );
                 break;
 
               case "mist":
-                setWeatherStatus("안개가 꼈어요. 운전 조심하세요.");
+                setWeatherStatus("안개가 꼈습니다.");
+                setWeatherImg(
+                  "https://firebasestorage.googleapis.com/v0/b/info-weather.appspot.com/o/free-icon-fog-1532335.png?alt=media&token=2154ce2a-827c-4817-b9e3-388d78f441a5"
+                );
                 break;
             }
           });
@@ -122,23 +153,36 @@ const TodayScreen = () => {
         <Text style={styles.dateText}>{viewDate}</Text>
       </View>
       <View style={styles.box_2}>
-        <Text style={styles.statusText}>{weatherStatus}</Text>
+        {weatherImg && (
+          <Image
+            style={styles.weatherImg}
+            source={{
+              uri: weatherImg,
+            }}
+          />
+        )}
+        <Text style={styles.statusText}>
+          <TypeWriter typing={1}>{weatherStatus}</TypeWriter>
+        </Text>
         <Text style={styles.tempText}>{currentTemp}°C</Text>
         <View style={styles.tempUnderLine}></View>
       </View>
       <View style={styles.box_3}>
         <Text style={styles.cityText}>{currentCity}</Text>
       </View>
-      <View style={styles.box_4}>
-        <View style={styles.box_4_box}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={["#f0eeb9", "#e7eb2a"]}
+        style={styles.box_4}
+      />
+      {/* <View style={styles.box_4_box}>
           <Text style={styles.tempGuideText}>최저기온</Text>
           <Text style={styles.minMaxText}>{minTemp}°C</Text>
         </View>
         <View style={styles.box_4_box}>
           <Text style={styles.tempGuideText}>최고기온</Text>
           <Text style={styles.minMaxText}>{maxTemp}°C</Text>
-        </View>
-      </View>
+        </View> */}
     </View>
   );
 };
@@ -150,65 +194,59 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `center`,
   },
+
   box_1: {
     flex: 2.5,
-
     width: `100%`,
-
     flexDirection: `column`,
     alignItems: `center`,
     justifyContent: `center`,
+    marginBottom: 100,
   },
-  dateText: {
-    fontSize: 25,
 
-    color: `#0b0b0b`,
+  dateText: {
+    fontSize: 19,
+    color: `#34495e`,
   },
 
   timeText: {
-    fontSize: 50,
-
-    fontWeight: `500`,
-    marginTop: 30,
+    fontSize: 34,
+    fontWeight: `700`,
   },
 
   statusText: {
     fontSize: 20,
-
-    marginBottom: 80,
-    fontWeight: `600`,
+    color: `#333`,
+    marginBottom: 20,
+    marginTop: 10,
   },
 
   box_2: {
     flex: 3,
-
     width: `100%`,
-
     flexDirection: `column`,
     alignItems: `center`,
     justifyContent: `flex-end`,
   },
 
   tempText: {
-    fontWeight: `600`,
-
+    fontWeight: `500`,
     fontSize: 90,
+    marginBottom: 5,
   },
 
   tempUnderLine: {
-    width: `80%`,
-    height: 5,
+    width: `70%`,
+    height: 2,
 
-    backgroundColor: "#a7a9ab",
-
-    borderRadius: 10,
-
-    marginBottom: 10,
+    backgroundColor: "#666",
+    borderRadius: 20,
+    marginTop: -10,
+    marginBottom: 5,
   },
 
   box_3: {
     flex: 1,
-
     width: `100%`,
     flexDirection: `column`,
     alignItems: `center`,
@@ -216,47 +254,55 @@ const styles = StyleSheet.create({
   },
 
   cityText: {
-    fontSize: 30,
-    fontWeight: `700`,
-
-    marginTop: 10,
-
-    color: `#5c5f66`,
+    fontSize: 20,
+    fontWeight: `500`,
+    color: `#888`,
   },
 
   box_4: {
     flex: 2,
-
     width: `100%`,
     flexDirection: `row`,
     alignItems: `center`,
     justifyContent: `center`,
+
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+
+    shadowColor: "#0b0b0b",
+    shadowOffset: {
+      width: 0,
+      height: -8,
+    },
+    shadowOpacity: 0.46,
+    shadowRadius: 11.15,
+
+    elevation: 17,
   },
 
   box_4_box: {
     flex: 1,
-
     width: `40%`,
     height: `100%`,
-
     alignItems: `center`,
     justifyContent: `center`,
   },
 
   tempGuideText: {
-    fontSize: 25,
-
-    fontWeight: `600`,
-    padding: 15,
+    fontSize: 26,
+    fontWeight: `500`,
+    padding: 5,
   },
 
   minMaxText: {
-    fontWeight: `500`,
+    fontWeight: `400`,
+    fontSize: 20,
+  },
 
-    fontSize: 35,
-    padding: 5,
-
-    marginTop: 15,
+  weatherImg: {
+    width: 160,
+    height: 160,
+    marginBottom: 20,
   },
 });
 
