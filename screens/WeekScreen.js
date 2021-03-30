@@ -1,11 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+  SafeAreaView,
+  FlatList,
+} from "react-native";
 import * as Location from "expo-location";
 
 const WEATHER_API_KEY = "c2279690f1a92e1324cfa1a79d5584ed";
 /*useEffect에는 async가 안걸림 아래에 가상의 함수를 만듦 */
 
+const Item = ({ time, temp }) => {
+  return (
+    <View>
+      <Text>{time}</Text>
+      <Text>{temp}</Text>
+    </View>
+  );
+};
+
 const WeekScreen = () => {
+  const renderItem = ({ item }) => {
+    return <Item time={item.dateTime} temp={item.temp} />;
+  };
+
   const [data0Date, setData0Date] = useState(null);
   const [data1Date, setData1Date] = useState(null);
   const [data2Date, setData2Date] = useState(null);
@@ -234,13 +255,47 @@ const WeekScreen = () => {
           </TouchableOpacity>
         )}
       </View>
-      <View style={styles.box2}>
-        {tab === 0 && <Text>0000000</Text>}
-        {tab === 1 && <Text>1111111</Text>}
-        {tab === 2 && <Text>2222222</Text>}
-        {tab === 3 && <Text>3333333</Text>}
-        {tab === 4 && <Text>4444444</Text>}
-      </View>
+      <SafeAreaView style={styles.box2}>
+        {tab === 0 && (
+          <FlatList
+            data={data0Date && data0Date}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.dateTime}
+          ></FlatList>
+        )}
+
+        {tab === 1 && (
+          <FlatList
+            data={data1Date && data1Date}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.dateTime}
+          ></FlatList>
+        )}
+
+        {tab === 2 && (
+          <FlatList
+            data={data2Date && data2Date}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.dateTime}
+          ></FlatList>
+        )}
+
+        {tab === 3 && (
+          <FlatList
+            data={data3Date && data3Date}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.dateTime}
+          ></FlatList>
+        )}
+
+        {tab === 4 && (
+          <FlatList
+            data={data4Date && data4Date}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.dateTime}
+          ></FlatList>
+        )}
+      </SafeAreaView>
     </View>
   );
 };
