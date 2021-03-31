@@ -6,6 +6,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import TypeWriter from "react-native-typewriter";
 
 const WEATHER_API_KEY = "c2279690f1a92e1324cfa1a79d5584ed";
+/*useEffect에는 async가 안걸림 아래에 가상의 함수를 만듦 */
 
 // _S 는 state이다.
 // useEffect(실행함수, [배열]);
