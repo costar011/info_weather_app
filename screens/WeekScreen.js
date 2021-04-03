@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  Button,
   TouchableOpacity,
   SafeAreaView,
   FlatList,
@@ -301,49 +302,39 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `center`,
   },
-
   box1: {
     flex: 1,
     width: `100%`,
     flexDirection: `row`,
     alignItems: `center`,
     justifyContent: `space-around`,
-
-    marginTop: 70,
   },
-
   box2: {
     flex: 4,
     width: `100%`,
   },
-
   standardBtn: {
     width: `19%`,
-    height: 45,
-
+    height: 35,
+    backgroundColor: `#f2f079`,
     alignItems: `center`,
     justifyContent: `center`,
+    borderRadius: 5,
 
-    borderRadius: 3.5,
-    borderColor: `rgb(200,200,200)`,
-    borderWidth: 1,
-
-    shadowColor: "#999",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 9,
     },
     shadowOpacity: 0.5,
     shadowRadius: 3,
 
     elevation: 17,
   },
-
   activeBtn: {
     width: `19%`,
-    height: 45,
-
-    backgroundColor: `#e7eb2a`,
+    height: 40,
+    backgroundColor: `#ebe834`,
     alignItems: `center`,
     justifyContent: `center`,
     borderRadius: 7,
@@ -354,20 +345,19 @@ const styles = StyleSheet.create({
       height: 9,
     },
     shadowOpacity: 0.5,
-    shadowRadius: 3.5,
+    shadowRadius: 3,
 
     elevation: 17,
   },
-
   btnTxt: {
-    fontWeight: `500`,
+    fontWeight: `600`,
     fontSize: 20,
   },
   listBox: {
     width: `100%`,
     flexDirection: `row`,
     justifyContent: `space-around`,
-    marginBottom: 7,
+    marginBottom: 10,
   },
 });
 
