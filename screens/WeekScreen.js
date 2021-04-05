@@ -3,8 +3,8 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
   TouchableOpacity,
+  Button,
   SafeAreaView,
   FlatList,
 } from "react-native";
@@ -13,16 +13,16 @@ import * as Location from "expo-location";
 const WEATHER_API_KEY = "c2279690f1a92e1324cfa1a79d5584ed";
 /*useEffect에는 async가 안걸림 아래에 가상의 함수를 만듦 */
 
-const WeekScreen = () => {
-  const Item = ({ time, temp }) => {
-    return (
-      <View style={styles.listBox}>
-        <Text>{time}</Text>
-        <Text>{temp}</Text>
-      </View>
-    );
-  };
+const Item = ({ time, temp }) => {
+  return (
+    <View style={styles.listBox}>
+      <Text>{time}</Text>
+      <Text>{temp}</Text>
+    </View>
+  );
+};
 
+const WeekScreen = () => {
   const renderItem = ({ item }) => {
     return <Item time={String(item.dateTime).split(` `)[1]} temp={item.temp} />;
   };
@@ -67,7 +67,7 @@ const WeekScreen = () => {
         const locData = await Location.getCurrentPositionAsync({});
 
         const weather = await fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?lat=${locData.coords.latitude}&lon=${locData.coords.longitude}&appid=${WEATHER_API_KEY}&units=metric`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${locData.coords.latitude}&lon=${locData.coords.longitude}&appid=${WEATHER_API_KEY}&units=metric`
         )
           .then((res) => {
             return res.json();
@@ -115,47 +115,101 @@ const WeekScreen = () => {
             let arr3 = [];
             let arr4 = [];
 
+            json.list.map((data) => {
+              const compareData = data.dt_txt.split(` `)[0];
+
+              switch (compareData) {
+                case data0:
+                  const prevData = {
+                    temp: String(data.main.temp).split(`.`)[0],
+                    dateTime: data.dt_txt,
+                  };
+
+                  arr0.push(prevData);
+                  break;
+
+                case data1:
+                  const prevData1 = {
+                    temp: String(data.main.temp).split(`.`)[0],
+                    dateTime: data.dt_txt,
+                  };
+
+                  arr1.push(prevData1);
+                  break;
+
+                case data2:
+                  const prevData2 = {
+                    temp: String(data.main.temp).split(`.`)[0],
+                    dateTime: data.dt_txt,
+                  };
+
+                  arr2.push(prevData2);
+                  break;
+
+                case data3:
+                  const prevData3 = {
+                    temp: String(data.main.temp).split(`.`)[0],
+                    dateTime: data.dt_txt,
+                  };
+
+                  arr3.push(prevData3);
+                  break;
+
+                case data4:
+                  const prevData4 = {
+                    temp: String(data.main.temp).split(`.`)[0],
+                    dateTime: data.dt_txt,
+                  };
+
+                  arr4.push(prevData4);
+                  break;
+              }
+            });
+
             setData0Date(arr0);
-            if (data0Date) {
-              if (btnFlag0) {
-                setBtnName0(String(data0Date[0].dateTime).substring(5, 10));
-                setBtnFlag0(false);
-              }
-            }
             setData1Date(arr1);
-            if (data0Date) {
-              if (btnFlag1) {
-                setBtnName1(String(data1Date[0].dateTime).substring(5, 10));
-                setBtnFlag1(false);
-              }
-            }
             setData2Date(arr2);
-            if (data2Date) {
-              if (btnFlag2) {
-                setBtnName2(String(data2Date[0].dateTime).substring(5, 10));
-                setBtnFlag2(false);
-              }
-            }
             setData3Date(arr3);
-            if (data3Date) {
-              if (btnFlag3) {
-                setBtnName3(String(data3Date[0].dateTime).substring(5, 10));
-                setBtnFlag3(false);
-              }
-            }
             setData4Date(arr4);
-            if (data4Date) {
-              if (btnFlag4) {
-                setBtnName4(String(data4Date[0].dateTime).substring(5, 10));
-                setBtnFlag4(false);
-              }
-            }
           });
       } catch (e) {
         console.log(e);
       }
     })();
   }, []);
+
+  if (data0Date) {
+    if (btnFlag0) {
+      setBtnName0(String(data0Date[0].dateTime).substring(5, 10));
+      setBtnFlag0(false);
+    }
+  }
+
+  if (data1Date) {
+    if (btnFlag1) {
+      setBtnName1(String(data1Date[0].dateTime).substring(5, 10));
+      setBtnFlag1(false);
+    }
+  }
+
+  if (data2Date) {
+    if (btnFlag2) {
+      setBtnName2(String(data2Date[0].dateTime).substring(5, 10));
+      setBtnFlag2(false);
+    }
+  }
+  if (data3Date) {
+    if (btnFlag3) {
+      setBtnName3(String(data3Date[0].dateTime).substring(5, 10));
+      setBtnFlag3(false);
+    }
+  }
+  if (data4Date) {
+    if (btnFlag4) {
+      setBtnName4(String(data4Date[0].dateTime).substring(5, 10));
+      setBtnFlag4(false);
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -168,7 +222,6 @@ const WeekScreen = () => {
             <Text style={styles.btnTxt}>{btnName0}</Text>
           </TouchableOpacity>
         )}
-
         {btnName1 && (
           <TouchableOpacity
             style={tab === 1 ? styles.activeBtn : styles.standardBtn}
@@ -177,7 +230,6 @@ const WeekScreen = () => {
             <Text style={styles.btnTxt}>{btnName1}</Text>
           </TouchableOpacity>
         )}
-
         {btnName2 && (
           <TouchableOpacity
             style={tab === 2 ? styles.activeBtn : styles.standardBtn}
@@ -186,7 +238,6 @@ const WeekScreen = () => {
             <Text style={styles.btnTxt}>{btnName2}</Text>
           </TouchableOpacity>
         )}
-
         {btnName3 && (
           <TouchableOpacity
             style={tab === 3 ? styles.activeBtn : styles.standardBtn}
@@ -195,7 +246,6 @@ const WeekScreen = () => {
             <Text style={styles.btnTxt}>{btnName3}</Text>
           </TouchableOpacity>
         )}
-
         {btnName4 && (
           <TouchableOpacity
             style={tab === 4 ? styles.activeBtn : styles.standardBtn}
@@ -210,35 +260,35 @@ const WeekScreen = () => {
           <FlatList
             data={data0Date && data0Date}
             renderItem={renderItem}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.dateTime}
           />
         )}
         {tab === 1 && (
           <FlatList
             data={data1Date && data1Date}
             renderItem={renderItem}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.dateTime}
           />
         )}
         {tab === 2 && (
           <FlatList
             data={data2Date && data2Date}
             renderItem={renderItem}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.dateTime}
           />
         )}
         {tab === 3 && (
           <FlatList
             data={data3Date && data3Date}
             renderItem={renderItem}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.dateTime}
           />
         )}
         {tab === 4 && (
           <FlatList
             data={data4Date && data4Date}
             renderItem={renderItem}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.dateTime}
           />
         )}
       </SafeAreaView>
