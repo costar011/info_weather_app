@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  Button,
   TouchableOpacity,
   SafeAreaView,
   FlatList,
@@ -114,56 +115,6 @@ const WeekScreen = () => {
             let arr3 = [];
             let arr4 = [];
 
-            json.list.map((data) => {
-              const compareData = data.dt_txt.split(` `)[0];
-
-              switch (compareData) {
-                case data0:
-                  const prevData = {
-                    temp: String(data.main.temp).split(`.`)[0],
-                    dateTime: data.dt_txt,
-                  };
-
-                  arr0.push(prevData);
-                  break;
-
-                case data1:
-                  const prevData1 = {
-                    temp: String(data.main.temp).split(`.`)[0],
-                    dateTime: data.dt_txt,
-                  };
-
-                  arr1.push(prevData1);
-                  break;
-
-                case data2:
-                  const prevData2 = {
-                    temp: String(data.main.temp).split(`.`)[0],
-                    dateTime: data.dt_txt,
-                  };
-
-                  arr2.push(prevData2);
-                  break;
-
-                case data3:
-                  const prevData3 = {
-                    temp: String(data.main.temp).split(`.`)[0],
-                    dateTime: data.dt_txt,
-                  };
-
-                  arr3.push(prevData3);
-                  break;
-
-                case data4:
-                  const prevData4 = {
-                    temp: String(data.main.temp).split(`.`)[0],
-                    dateTime: data.dt_txt,
-                  };
-
-                  arr4.push(prevData4);
-                  break;
-              }
-            });
             setData0Date(arr0);
             if (data0Date) {
               if (btnFlag0) {
@@ -301,39 +252,47 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `center`,
   },
+
   box1: {
     flex: 1,
     width: `100%`,
     flexDirection: `row`,
     alignItems: `center`,
     justifyContent: `space-around`,
+    marginTop: 50,
   },
+
   box2: {
     flex: 4,
     width: `100%`,
   },
+
   standardBtn: {
     width: `19%`,
-    height: 35,
-    backgroundColor: `#f2f079`,
+    height: 45,
+
     alignItems: `center`,
     justifyContent: `center`,
-    borderRadius: 5,
+    borderRadius: 4.5,
+    borderColor: `rgb(200,200,200)`,
+    borderWidth: 1,
 
-    shadowColor: "#000",
+    shadowColor: "#999",
     shadowOffset: {
       width: 0,
-      height: 9,
+      height: 4,
     },
     shadowOpacity: 0.5,
     shadowRadius: 3,
 
     elevation: 17,
   },
+
   activeBtn: {
     width: `19%`,
-    height: 40,
-    backgroundColor: `#ebe834`,
+    height: 45,
+
+    backgroundColor: `#e7eb2a`,
     alignItems: `center`,
     justifyContent: `center`,
     borderRadius: 7,
@@ -348,15 +307,16 @@ const styles = StyleSheet.create({
 
     elevation: 17,
   },
+
   btnTxt: {
-    fontWeight: `600`,
+    fontWeight: `500`,
     fontSize: 20,
   },
   listBox: {
     width: `100%`,
     flexDirection: `row`,
     justifyContent: `space-around`,
-    marginBottom: 10,
+    marginBottom: 7,
   },
 });
 
