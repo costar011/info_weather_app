@@ -11,13 +11,12 @@ import {
 import * as Location from "expo-location";
 
 const WEATHER_API_KEY = "c2279690f1a92e1324cfa1a79d5584ed";
-/*useEffect에는 async가 안걸림 아래에 가상의 함수를 만듦 */
 
 const Item = ({ time, temp }) => {
   return (
     <View style={styles.listBox}>
-      <Text>{time}</Text>
-      <Text>{temp}</Text>
+      <Text style={styles.listText}>{time}</Text>
+      <Text style={styles.listText2}>{`${temp}`}°C</Text>
     </View>
   );
 };
@@ -299,22 +298,22 @@ const WeekScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: `center`,
-    justifyContent: `center`,
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   box1: {
-    flex: 1,
     width: `100%`,
+    flex: 1,
     flexDirection: `row`,
     alignItems: `center`,
     justifyContent: `space-around`,
-    marginTop: 50,
+    marginTop: 30,
   },
 
   box2: {
-    flex: 4,
     width: `100%`,
+    flex: 4,
   },
 
   standardBtn: {
@@ -323,7 +322,7 @@ const styles = StyleSheet.create({
 
     alignItems: `center`,
     justifyContent: `center`,
-    borderRadius: 4.5,
+    borderRadius: 3.5,
     borderColor: `rgb(200,200,200)`,
     borderWidth: 1,
 
@@ -332,41 +331,60 @@ const styles = StyleSheet.create({
       width: 0,
       height: 4,
     },
-    shadowOpacity: 0.5,
-    shadowRadius: 3,
+    shadowOpacity: 0.7,
+    shadowRadius: 2.1,
 
-    elevation: 17,
+    elevation: 18,
+  },
+
+  btnTxt: {
+    color: `#000`,
   },
 
   activeBtn: {
     width: `19%`,
     height: 45,
+    backgroundColor: `#ffdd59`,
 
-    backgroundColor: `#e7eb2a`,
     alignItems: `center`,
     justifyContent: `center`,
-    borderRadius: 7,
+    borderRadius: 3.5,
 
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 9,
+      height: 5,
     },
-    shadowOpacity: 0.5,
-    shadowRadius: 3,
+    shadowOpacity: 0.7,
+    shadowRadius: 2.1,
 
-    elevation: 17,
+    elevation: 20,
   },
 
-  btnTxt: {
-    fontWeight: `500`,
-    fontSize: 20,
-  },
   listBox: {
     width: `100%`,
+    height: 70,
+
     flexDirection: `row`,
     justifyContent: `space-around`,
-    marginBottom: 7,
+    marginBottom: 5,
+
+    borderBottomColor: `#999`,
+    borderBottomWidth: 1,
+  },
+
+  listText: {
+    fontSize: 27,
+
+    color: `#999`,
+  },
+
+  listText2: {
+    fontSize: 30,
+
+    color: `#000`,
+
+    fontWeight: `700`,
   },
 });
 
